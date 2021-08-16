@@ -1,3 +1,8 @@
-FROM golang:1.15-alpine as dev
+FROM golang:1.12.0-alpine3.9
+RUN mkdir /app
+ADD ./videos /app
+WORKDIR /app
+RUN go build -o main .
+EXPOSE 8080
 
-WORKDIR /work
+CMD ["/app/main"]
